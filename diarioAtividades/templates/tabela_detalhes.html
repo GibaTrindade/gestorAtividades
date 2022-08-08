@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- POST -->
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8 text-center">
+            <h2>{{tabela.nome.upper}}</h2>
+            <h5>Tabela do mês {{tabela.mes}} criada em {{tabela.criada_em}}</h5>
+            <p class="text-muted mt-4">
+                <small>
+                    Usuário: {{tabela.autor}}
+                </small>
+            </p>
+        </div>
+        <div class="col-xl"></div>
+    </div>
+
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+
+
+        </div>
+        <div class="col-xl"></div>
+    </div>
+
+    <div class="text-center">
+        <a href="{% url 'gerar_frequencia' tabela.id %}" class="btn btn-success">GERAR FREQUÊNCIA</a>
+    </div>
+
+    {% if itensTabela %}
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8" >
+             {% include 'parciais/_messages.html' %}
+            <h2 class="my-3">Itens da tabela ({{ itensTabela.count }})</h2>
+
+
+                {% for itemTabela in itensTabela%}
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <td colspan="10">
+                                DATA: {{itemTabela.data}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">
+                                Tempo de Duração
+                            </td>
+                            <td colspan="9">
+                                Tarefas
+                            </td>
+                        </tr>
+                        {% for atividade in itemTabela.atividades.all %}
+
+
+                        <tr>
+                            <td colspan="1">
+                                {{atividade.duracao}}h
+                            </td>
+                            <td colspan="9">
+                                {{atividade.descricao.upper}}
+                            </td>
+
+
+                        </tr>
+
+                        {% endfor %}
+                        <form method="POST" action="{% url 'item_delete' itemTabela.id %}">
+                            {% csrf_token %}
+                            <a href="{% url 'item_delete' itemTabela.id %}">
+                            <button type="submit" class="btn btn-danger" onClick="deleteFunction()">Excluir</button></a>
+                        </form>
+                         </table>
+                        <br>
+
+
+
+                {% endfor %}
+            <script>
+                    function deleteFunction(e) {
+                        if(!confirm("Tem certeza que deseja excluir esse item?")){
+                            e.preventDefault();
+                        }
+                    }
+            </script>
+
+        </div>
+        <div class="col-xl"></div>
+    </div>
+    {% endif %}
+
+
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+            <h2 class="my-3">Insira um item:</h2>
+
+            <form method="POST" action="#">
+                 {% csrf_token %}
+                <table class="table">
+                    {{ form }}
+                    <tr>
+                        <td colspan="2">
+
+                            <input id="envia_comentario" type="submit" class="btn btn-primary"
+                                value="Enviar">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+
+        </div>
+        <div class="col-xl"></div>
+    </div>
+</div>
+<!-- POST -->
+
+{% endblock %}
+

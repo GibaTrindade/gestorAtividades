@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<!-- CONTENT -->
+{% include 'parciais/_messages.html' %}
+<div class="card-columns mt-4">
+
+    {% for tabela in tabelas %}
+    <div class="card border-primary mb-3">
+
+
+        <div class="card-header text-white"><a href="{% url 'tabela_detalhes' tabela.id %}"><strong>DIÁRIO DE ATIVIDADES</strong></a></div>
+
+
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="{% url 'tabela_detalhes' tabela.id %}">
+                    {{ tabela.nome.upper }}
+                </a>
+            </h5>
+            <p class="card-text">Esta é a tabela do mês {{tabela.mes}}</p>
+            <p class="card-text">
+                <small class="text-muted">Data da criação: {{tabela.criada_em|naturalday|title}}</small>
+            </p>
+            <div class="btn-toolbar justify-content-between">
+                <div class="text-left mr-2">
+                    <form method="POST" action="{% url 'tabela_delete' tabela.id %}">
+                        {% csrf_token %}
+                        <a href="{% url 'tabela_delete' tabela.id %}">
+                        <button type="submit" class="btn btn-outline-danger" onClick="deleteFunction()">Excluir Tabela</button></a>
+                    </form>
+                </div>
+                <div class="text-right">
+                    <a href="{% url 'tabela_detalhes' tabela.id %}" class="btn btn-outline-secondary">Preencher Tabela</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<!--/CONTENT-->
+    {% include 'parciais/_pagination.html' %}
+<script>
+        function deleteFunction(e) {
+            if(!confirm("Tem certeza que deseja excluir essa tabela?")){
+                e.preventDefault();
+            }
+        }
+</script>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Frequencia</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <td><strong>FOLHA DE FREQUÊNCIA:</strong></td>
+        <td colspan="6"><strong>MÊS/ANO:   {% if tabela.mes < 10 %}0{% endif %}{{ tabela.mes }}/{{tabela.ano}}</strong></td>
+    <tr>
+    <td colspan="1"><strong>FUNCIONÁRIO:</strong></td>
+    <td colspan="5">Gilberto Trindade Henriques Nunes</td>
+    <td colspan="1"><strong>MATRÍCULA:</strong></td>
+    <td colspan="1">363.385-3</td>
+
+    </tr>
+    </tr>
+    <tr>
+        <td><strong>LOTAÇÃO:</strong></td>
+        <td colspan="6">INSTITUTO DE GESTÃO - NÚCLEO DE CIÊNCIA DE DADOS</td>
+
+    </tr>
+
+
+    <tr>
+        <td><strong>CARGO:</strong></td>
+        <td colspan="6">GESTOR GOVERNAMENTAL - ESPECIALIDADE PLANEJAMENTO, ORÇAMENTO E GESTÃO</td>
+
+    </tr>
+    <tr>
+        <td><strong>CHEFIA IMEDIATA:</strong></td>
+        <td colspan="6">CAROLINNE SILVA</td>
+
+    </tr>
+    <tr>
+        <td colspan="1"><strong>DATA</strong></td><td colspan="1"><strong>DIA</strong></td><td colspan="1"><strong>ENTRADA</strong></td>
+        <td colspan="1"><strong>SAÍDA</strong></td><td colspan="1"><strong>ENTRADA</strong></td><td colspan="1"><strong>SAÍDA</strong></td>
+        <td colspan="1"><strong>JUSTIFICATIVA</strong></td><td colspan="1"><strong>ABONO</strong></td>
+    </tr>
+    {% for diaMes, diaSem in diasMesSem %}
+
+        <tr>
+            <td>
+                {{ diaMes }}
+            </td>
+            {% if diaMes in listaDiasRemoto or diaSem == 'Sábado' or diaSem == 'Domingo' %}
+            <td>
+                {{ diaSem }}
+            </td>
+            <td>
+                -
+            </td>
+            <td>
+                -
+            </td>
+            <td>
+                -
+            </td>
+            <td>
+                -
+            </td>
+            {% if diaMes in listaDiasRemoto %}
+            <td>
+                TRABALHO REMOTO (########)
+            </td>
+            <td>
+
+            </td>
+            {% else %}
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            {% endif %}
+
+
+
+
+            {% else %}
+            <td>
+                {{ diaSem }}
+            </td>
+            <td>
+                8:00
+            </td>
+            <td>
+                12:00
+            </td>
+            <td>
+                13:00
+            </td>
+            <td>
+                17:00
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
