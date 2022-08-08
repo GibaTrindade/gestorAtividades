@@ -19,7 +19,10 @@ class FormItemTabela(ModelForm):
                 'Soma das horas precisa ser igual a 8'
             )
         return data
-
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['data'].widget.attrs.update({'class': 'mask-data'})
 
     class Meta:
         model = ItemTabela
