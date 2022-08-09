@@ -7,47 +7,47 @@
     {% csrf_token %}
   <div class="form-group">
     <label>Nome</label>
-    <input type="text" name="nome" class="form-control" placeholder="Digite seu nome">
+    <input type="text" name="nome" value="{{ request.POST.nome }}" class="form-control" placeholder="Digite seu nome">
   </div>
     <div class="form-group">
     <label>Sobrenome</label>
-    <input type="text" name="sobrenome" class="form-control" placeholder="Digite seu sobrenome">
+    <input type="text" name="sobrenome" value="{{ request.POST.sobrenome }}" class="form-control" placeholder="Digite seu sobrenome">
   </div>
     <div class="form-group">
     <label>Matrícula</label>
-    <input type="text" name="matricula" class="form-control" placeholder="Digite sua matrícula">
+    <input type="text" name="matricula" value="{{ request.POST.matricula }}" class="form-control" placeholder="Digite sua matrícula">
   </div>
      <div class="form-group">
     <label>Chefia imediata</label>
-    <input type="text" name="chefia" class="form-control" placeholder="Digite o nome da chefia imediata">
+    <input type="text" name="chefia" value="{{ request.POST.chefia }}" class="form-control" placeholder="Digite o nome da chefia imediata">
   </div>
     <div class="form-group">
     <label>Setor</label>
-    <input type="text" name="setor" class="form-control" placeholder="Digite o nome da chefia imediata">
+    <input type="text" name="setor" value="{{ request.POST.setor }}" class="form-control" placeholder="Digite o nome da chefia imediata">
   </div>
     <div class="form-group">
     <label>Email</label>
-    <input type="email" name="email" class="form-control" placeholder="Digite seu email">
+    <input type="email" name="email" value="{{ request.POST.email }}" class="form-control" placeholder="Digite seu email">
   </div>
     <div class="form-group">
     <label>Usuário</label>
-    <input type="text" name="usuario" class="form-control" placeholder="Digite seu usuário">
+    <input type="text" name="usuario" value="{{ request.POST.usuario }}" class="form-control" placeholder="Digite seu usuário">
   </div>
     <div class="form-group">
     <label>Entrada</label>
-    <input type="text" name="entrada" class="form-control" placeholder="Digite o horário de entrada">
+    <input type="text" name="entrada" value="{{ request.POST.entrada }}" class="form-control" placeholder="Digite o horário de entrada">
   </div>
     <div class="form-group">
     <label>Saída do almoço</label>
-    <input type="text" name="saidaAlmoco" class="form-control" placeholder="Digite o horário de saída para o almoço">
+    <input type="text" name="saidaAlmoco" value="{{ request.POST.saidaAlmoco }}" class="form-control" placeholder="Digite o horário de saída para o almoço">
   </div>
     <div class="form-group">
     <label>Volta do almoço</label>
-    <input type="text" name="voltaAlmoco" class="form-control" placeholder="Digite o horário de volta do almoço">
+    <input type="text" name="voltaAlmoco" value="{{ request.POST.voltaAlmoco }}" class="form-control" placeholder="Digite o horário de volta do almoço">
   </div>
     <div class="form-group">
     <label>Saída</label>
-    <input type="text" name="saida" class="form-control" placeholder="Digite o horário de saída">
+    <input type="text" name="saida" value="{{ request.POST.saida }}" class="form-control" placeholder="Digite o horário de saída">
   </div>
     <div class="form-group">
     <label>Senha</label>

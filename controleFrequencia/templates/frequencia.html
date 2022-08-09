@@ -9,15 +9,15 @@
         <td colspan="6"><strong>MÊS/ANO:   {% if tabela.mes < 10 %}0{% endif %}{{ tabela.mes }}/{{tabela.ano}}</strong></td>
     <tr>
     <td colspan="1"><strong>FUNCIONÁRIO:</strong></td>
-    <td colspan="5">Gilberto Trindade Henriques Nunes</td>
+    <td colspan="5">{{ user.nome }} {{ user.sobrenome }}</td>
     <td colspan="1"><strong>MATRÍCULA:</strong></td>
-    <td colspan="1">363.385-3</td>
+    <td colspan="1">{{ user.matricula }}</td>
 
     </tr>
     </tr>
     <tr>
         <td><strong>LOTAÇÃO:</strong></td>
-        <td colspan="6">INSTITUTO DE GESTÃO - NÚCLEO DE CIÊNCIA DE DADOS</td>
+        <td colspan="6">{{ user.setor }}</td>
 
     </tr>
 
@@ -29,7 +29,7 @@
     </tr>
     <tr>
         <td><strong>CHEFIA IMEDIATA:</strong></td>
-        <td colspan="6">CAROLINNE SILVA</td>
+        <td colspan="6">{{ user.chefia }}</td>
 
     </tr>
     <tr>
@@ -83,16 +83,16 @@
                 {{ diaSem }}
             </td>
             <td>
-                8:00
+                {{ user.entrada }}
             </td>
             <td>
-                12:00
+                {{ user.saidaAlmoco }}
             </td>
             <td>
-                13:00
+                {{ user.voltaAlmoco }}
             </td>
             <td>
-                17:00
+                {{ user.saida }}
             </td>
             <td>
 
