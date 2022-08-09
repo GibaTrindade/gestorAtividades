@@ -13,7 +13,6 @@ from django.contrib import messages
 import locale
 
 
-
 class Index(ListView):
     model = Tabela
     template_name = 'index.html'
@@ -25,7 +24,6 @@ class Index(ListView):
         qs = qs.order_by('-id').filter(autor=self.request.user)
 
         return qs
-
 
 class TabelaDetalhe(FormMixin, DetailView):
     template_name = 'tabela_detalhes.html'

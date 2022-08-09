@@ -30,6 +30,30 @@
         <a href="{% url 'gerar_frequencia' tabela.id %}" class="btn btn-success">GERAR FREQUÊNCIA</a>
     </div>
 
+    <div class="row pt-5">
+        <div class="col-xl"></div>
+        <div class="col-xl-8">
+            <h2 class="my-3">Insira um item:</h2>
+
+            <form method="POST" action="#">
+                 {% csrf_token %}
+                <table class="table">
+                    {{ form }}
+                    <tr>
+                        <td colspan="2">
+
+                            <input id="envia_comentario" type="submit" class="btn btn-primary"
+                                value="Enviar">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+
+        </div>
+        <div class="col-xl"></div>
+    </div>
+
     {% if itensTabela %}
     <div class="row pt-5">
         <div class="col-xl"></div>
@@ -80,13 +104,7 @@
 
 
                 {% endfor %}
-            <script>
-                    function deleteFunction(e) {
-                        if(!confirm("Tem certeza que deseja excluir esse item?")){
-                            e.preventDefault();
-                        }
-                    }
-            </script>
+
 
         </div>
         <div class="col-xl"></div>
@@ -94,29 +112,7 @@
     {% endif %}
 
 
-    <div class="row pt-5">
-        <div class="col-xl"></div>
-        <div class="col-xl-8">
-            <h2 class="my-3">Insira um item:</h2>
 
-            <form method="POST" action="#">
-                 {% csrf_token %}
-                <table class="table">
-                    {{ form }}
-                    <tr>
-                        <td colspan="2">
-
-                            <input id="envia_comentario" type="submit" class="btn btn-primary"
-                                value="Enviar">
-                        </td>
-                    </tr>
-                </table>
-            </form>
-
-
-        </div>
-        <div class="col-xl"></div>
-    </div>
 </div>
 <!-- POST -->
 

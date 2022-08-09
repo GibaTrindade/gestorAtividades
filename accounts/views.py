@@ -1,13 +1,33 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from accounts.models import User
+from django.contrib import messages, auth
+from .models import User
+from .forms import FormUpdateUser
+from django.views.generic.edit import UpdateView
+
 
 # Create your views here.
 def login(request):
+    if request.method != 'POST':
+        return render(request, 'login.html')
+
+    usuario = request.POST.get('usuario')
+    senha = request.POST.get('senha')
+
+    user = auth.authenticate(username=usuario, password=senha)
+
+    if not user:
+        messages.error(request, 'Usuário ou senha inválidos!')
+        return render(request, 'login.html')
+    else:
+        auth.login(request, user)
+        messages.success(request, 'Seja bem vindo!')
+        return redirect('index')
+
     return render(request, 'login.html')
 
 def logout(request):
-    return render(request, 'logout.html')
+    auth.logout(request)
+    return redirect('login')
 
 def cadastro(request):
     if request.method != 'POST':
@@ -51,3 +71,12 @@ def cadastro(request):
     user.save()
     messages.success(request, 'Usuário cadastrado com sucesso!')
     return redirect('login')
+
+
+class UserUpdateView(UpdateView):
+    model = User
+    form_class = FormUpdateUser
+    template_name = 'update_user.html'
+    success_url = '/'
+    #fields = ['matricula', 'chefia', 'setor', 'entrada',
+    #          'saidaAlmoco', 'voltaAlmoco', 'saida']
