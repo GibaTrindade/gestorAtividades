@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 calss="mt-3 mb-3">ALTERAÇÃO</h1>
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Alterar">
+    </form>
+
+{% endblock %}

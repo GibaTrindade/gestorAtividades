@@ -20,3 +20,10 @@
 <script src="{% static 'vendor/jquery/jquery.mask.js' %}"></script>
 <script src="{% static 'vendor/jquery/mascara.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script>
+        function deleteFunction(e) {
+            if(!confirm("Tem certeza que deseja excluir esse item?")){
+                e.preventDefault();
+            }
+        }
+</script>

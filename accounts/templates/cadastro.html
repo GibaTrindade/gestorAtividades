@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 calss="mt-3 mb-3">CADASTRO</h1>
+<form method="POST" action="{% url 'cadastro' %}">
+    {% include 'parciais/_messages.html' %}
+    {% csrf_token %}
+  <div class="form-group">
+    <label>Nome</label>
+    <input type="text" name="nome" value="{{ request.POST.nome }}" class="form-control" placeholder="Digite seu nome">
+  </div>
+    <div class="form-group">
+    <label>Sobrenome</label>
+    <input type="text" name="sobrenome" value="{{ request.POST.sobrenome }}" class="form-control" placeholder="Digite seu sobrenome">
+  </div>
+    <div class="form-group">
+    <label>Matrícula</label>
+    <input type="text" name="matricula" value="{{ request.POST.matricula }}" id="id_matricula" class="form-control mask-matricula" placeholder="###.###-#">
+  </div>
+     <div class="form-group">
+    <label>Chefia imediata</label>
+    <input type="text" name="chefia" value="{{ request.POST.chefia }}" class="form-control" placeholder="Digite o nome da chefia imediata">
+  </div>
+    <div class="form-group">
+    <label>Setor</label>
+    <input type="text" name="setor" value="{{ request.POST.setor }}" class="form-control" placeholder="Digite seu setor">
+  </div>
+    <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="email" value="{{ request.POST.email }}" class="form-control" placeholder="abc@abc.com">
+  </div>
+    <div class="form-group">
+    <label>Usuário</label>
+    <input type="text" name="usuario" value="{{ request.POST.usuario }}" class="form-control" placeholder="Digite seu usuário">
+  </div>
+    <div class="form-group">
+    <label>Entrada</label>
+    <input type="text" name="entrada" value="{{ request.POST.entrada }}" class="form-control mask-entrada" placeholder="#:##">
+  </div>
+    <div class="form-group">
+    <label>Saída do almoço</label>
+    <input type="text" name="saidaAlmoco" value="{{ request.POST.saidaAlmoco }}" class="form-control mask-salmoco" placeholder="#:##">
+  </div>
+    <div class="form-group">
+    <label>Volta do almoço</label>
+    <input type="text" name="voltaAlmoco" value="{{ request.POST.voltaAlmoco }}" class="form-control mask-valmoco" placeholder="#:##">
+  </div>
+    <div class="form-group">
+    <label>Saída</label>
+    <input type="text" name="saida" value="{{ request.POST.saida }}" class="form-control mask-saida" placeholder="#:##">
+  </div>
+    <div class="form-group">
+    <label>Senha</label>
+    <input type="password" name="senha" class="form-control" placeholder="Digite sua senha">
+  </div>
+    <div class="form-group">
+    <label>Repita a senha</label>
+    <input type="password" name="senha2" class="form-control" placeholder="Repita sua senha">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+{% endblock %}

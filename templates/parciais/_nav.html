@@ -8,12 +8,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'tabela_add' %}">Criar Diário</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'atividade_add' %}">Cadastrar Atividades</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'update' user.id %}">Alterar Dados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">LogOut</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cadastro' %}">Cadastrar</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
