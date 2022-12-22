@@ -1,0 +1,1 @@
+web gunicorn gestorAtividades.wsgi:application --log-file -
